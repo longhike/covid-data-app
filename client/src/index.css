@@ -1,0 +1,28 @@
+* {
+    background-image: none;
+}
+
+html, body {
+    background-image: url("./images/display.jpg");
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    html, body {
+        background-image: url("./images/mobile.png");
+        background-size: cover;
+    }
+
+    .card {
+        width: 80%;
+    }
+
+}
+.card {
+    border: none;
+    background: rgba(43, 43, 43, 0.4);
+}
+
+.body-holder {
+    margin: 10px;
+}
