@@ -5,8 +5,12 @@ import SearchCard from '../../components/SearchCard'
 import Results from '../../components/Results'
 import Loading from '../../components/Loading'
 
-function CovidPage() {
-//   const [results, setResults] = useState();
+// this will take user props from App in the form of the id.
+
+// props.results should be the json from db
+
+function CovidPage(props) {
+//   const [results, setResults] = useState(props.results);
 
   return (
     <div>
@@ -18,8 +22,8 @@ function CovidPage() {
             <SearchCard />
           </div>
           <div className="col-md-5">
-            <Loading />
-            <Results />
+            <Loading status={props.status}/>
+            <Results results={props.results}/>
           </div>
         </div>
       </div>

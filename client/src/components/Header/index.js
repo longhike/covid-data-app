@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 
-// this props should be the username as given from the DB, NOT directly from login form.
+// props here are from App // Main
 
 function myNav (props) {
     return (

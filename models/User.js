@@ -7,6 +7,11 @@ const UserSchema = new Schema({
     trim: true,
     required: "You must have a username"
   },
+  // password: {
+  //   type: String,
+  //   trim: require,
+  //   required: 'You must have a username(password)'
+  // },
   date_created: {
     type: Date,
     default: Date.now

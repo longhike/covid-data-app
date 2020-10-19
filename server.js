@@ -33,16 +33,11 @@ app.use(session({
 
 // Passport stuff
 app.use(passport.initialize())
-app.use(passport.session())
-// require('./config/passport')(passport);
-
-
+app.use(passport.session())                  
 
 // ROUTES
-// const htmlrouter = require('./routes/html-routes')
-const apirouter = require('./routes/controller')
-// app.use(htmlrouter)
-app.use(apirouter)
+const router = require('./routes/controller')
+app.use(router)
 
 
 app.listen(PORT, () => {
