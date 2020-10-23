@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 
 export default {
@@ -12,6 +13,11 @@ export default {
         } catch (error) {
             console.warn(error)
         }
+    },
+
+    deleteSearch: (id) => {
+        
+        return axios.post('/posts/delete/' + id)
     },
     
 }

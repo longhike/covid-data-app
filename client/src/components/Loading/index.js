@@ -9,7 +9,7 @@ function Loading (props) {
             animation="border" 
             variant="light" 
             style={
-                { display: props.loadingDisplay ? `block` : "none" }
+                { display: props.loadingDisplay ? props.loadingDisplay : "none" }
             }
         />
     )

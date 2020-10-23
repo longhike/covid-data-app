@@ -28,7 +28,7 @@ app.use(session({
   secret: "a very secret string",
   resave: false,
   saveUninitialized: true,
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
+  // store: new MongoStore({ mongooseConnection: mongoose.connection })
 }))
 
 // Passport stuff

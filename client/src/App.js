@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import axios from 'axios'
 import Main from './pages/main';
 import Login from './pages/login'
-
-
-// add function to include with compononent 
 
 
 class App extends Component {
@@ -13,29 +9,38 @@ class App extends Component {
   state = {
     loggedIn: false,
     username: null,
-    userid: null
+    userid: null,
+    posts: null,
+    currentPosts: null
   }
 
+  // when App loads, run getUser function which will perform a get and set the state to the user if there's a session in progress
   componentDidMount() {
-    this.updateUser()
+    this.getUser()
   }
 
-  updateUser(userObject) {
-    this.setState(userObject)
+  updateUser(state) {
+    this.setState(state)
   }
 
   getUser = () => {
-    axios.get('/user/').then(response => {
+    axios
+    .get('/user')
+    .then(response => {
       console.log('Get user response: ')
       console.log(response)
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ')
+        console.log(response.data.user);
 
         this.setState({
           loggedIn: true,
-          username: response.data.user.username,
-          userid: response.data.user._id
+          username: response.data.user,
+          userid: response.data.id,
+          posts: response.data.posts
+
         })
+        this.getPosts()
       } else {
         console.log('Get user: no user');
         this.setState({
@@ -47,7 +52,20 @@ class App extends Component {
     })
   }
 
-  loginUser = async (name) => {
+  getPosts = () => {
+    axios
+      .get('/posts')
+      .then(response => {
+        this.setState({
+          currentPosts: response.data
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  loginUser = (name) => {
     console.log(name)
 
     fetch("/login", {
@@ -59,15 +77,39 @@ class App extends Component {
     })
       .then(res => res.json())
       .then(res => this.setState({ loggedIn: true, username: res.username, userid: res._id }))
+      .then(this.updateUser)
+      .then(this.getUser)
+      .then(window.location.reload())
       .catch(err => console.log(err))
   }
+  
   render() {
-    return (
-      <Router>
-        <Route exact path="/login" component={(props) => <Login {...props} loggedIn={this.state.loggedIn} username={this.state.username} userid={this.state.userid} loginUser={this.loginUser} />} />
+    const isLoggedIn = this.state.loggedIn
+    let pageShown
+    console.log(this.state)
 
-        <Route exact path="/" component={Main} loggedIn={this.state.loggedIn} username={this.state.username} userid={this.state.userid} />
-      </Router>
+    if (isLoggedIn) {
+      pageShown = <Main 
+        loggedIn={this.state.loggedIn} 
+        username={this.state.username} 
+        userid={this.state.userid}
+        posts={this.state.posts}
+        currentPosts={this.state.currentPosts}
+        getPosts={this.getPosts}
+        updateUser={this.updateUser} 
+        />
+    } else {
+      pageShown = <Login 
+        loggedIn={this.state.loggedIn} 
+        username={this.state.username} 
+        userid={this.state.userid} 
+        loginUser={this.loginUser} 
+      />
+    }
+    return (
+      <div>
+        {pageShown}
+      </div>
     );
   }
 
