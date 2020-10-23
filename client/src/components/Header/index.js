@@ -1,19 +1,23 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Button from 'react-bootstrap/Button'
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
+import HtmlToExcel from 'react-html-table-to-excel'
 import Navbar from 'react-bootstrap/Navbar'
 
 // props here are from App // Main
 
-class myNav extends Component {
+function myNav (props) {
+    console.log(props);
     
-    logout(event) {
+    function logOut (event) {
         event.preventDefault()
         console.log('logging out')
         axios.post('/logout').then(response => {
           console.log(response.data)
           if (response.status === 200) {
-            this.props.updateUser({
+            props.updateUser({
               loggedIn: false,
               username: null
             })     
@@ -27,7 +31,7 @@ class myNav extends Component {
         })
       }
     
-    copytable() {
+    function copyTable () {
         console.log('copied!')
         const urlField = document.getElementById('table')
         const range = document.createRange()
@@ -36,25 +40,33 @@ class myNav extends Component {
         document.execCommand('copy')
     }
 
-    render () {
         return (
             <Navbar>
-                <Navbar.Brand>
-                    Welcome, {this.props.username}
+                <Navbar.Brand style={{ flex: 1 }}>
+                    Welcome, {props.username}
                 </Navbar.Brand>
-                <span>
-                    <Button onClick={this.copytable}>
-                        Copy Table
-                    </Button>
-                </span>
-                <span>
-                    <Button onClick={this.logout}>
-                        Logout
-                    </Button>
-                </span>
+                <ButtonToolbar>
+                    <ButtonGroup className="mr-2">
+                        <Button variant="info" className='btn-sm' onClick={copyTable}>
+                            Copy Table
+                        </Button>
+                    </ButtonGroup>
+                    <ButtonGroup className="mr-2">
+                        <HtmlToExcel 
+                            table="table"
+                            filename={`data_export_${props.username}`}
+                            buttonText="Download"
+                            className="btn btn-dark btn-sm"
+                        />
+                    </ButtonGroup>
+                    <ButtonGroup>
+                        <Button variant="danger" className='btn-sm' onClick={logOut}>
+                            Log Out
+                        </Button>
+                    </ButtonGroup>
+                </ButtonToolbar>
             </Navbar>
         )
-        }
 }
 
 export default myNav

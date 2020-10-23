@@ -18,12 +18,21 @@ function LoginForm(props) {
                 <div className='row'>
                     <div className='col'></div>
                     <div className='col-md-6'>
-                        <Card>
+                        <Card  style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <div className='card-header'>
-                                <strong>GLOBAL COVID-19</strong>
+                                <h3>
+                                    <strong>
+                                        Precision19
+                                    </strong>
+                                </h3>
+                            </div>
+                            <div className='card-body'>
+                                <p>
+                                    A targeted resource for researchers
+                                </p>
                             </div>
                             <div className="form-group">
-                                <input type="text" placeholder="username" onChange={e => setState(e.target.value)} ></input>
+                                <input className='form-control' type="text" placeholder="username" onChange={e => setState(e.target.value)} ></input>
                             </div>
                             <div className='form-group'>
                                 <Button type="submit" className='btn btn-sm btn-secondary' onClick={() => props.loginUser(state)}>Log In</Button>

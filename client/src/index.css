@@ -7,6 +7,8 @@ html, body:not(.table) {
     color: white;
 }
 
+
+
 /* table {
     border-spacing: 0;
 }
@@ -46,11 +48,11 @@ tbody {
     height: 200px;
 } */
 
-tbody {
+/* tbody {
     height: 100px;
     overflow-y: auto; 
     overflow-x: auto; 
-}
+} */
 
 @media only screen and (max-width: 600px) {
     html, body {
@@ -60,6 +62,18 @@ tbody {
 
     .card {
         width: 80%;
+    }
+
+    .table {
+        width: 80%;
+    }
+
+}
+
+@media only screen and (max-width: 767px) {
+    
+    .table {
+        margin-top: 10px;
     }
 
 }
@@ -77,6 +91,10 @@ tbody {
     color: white !important;
 }
 
+.row {
+    margin-top: 10px;
+}
+
 .table {
-    background-color: rgb(245, 245, 245, .75)
+    background-color: rgb(245, 245, 245, .75);
 }
