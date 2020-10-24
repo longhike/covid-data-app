@@ -31,14 +31,14 @@ function myNav (props) {
         })
       }
     
-    function copyTable () {
-        console.log('copied!')
-        const urlField = document.getElementById('table')
-        const range = document.createRange()
-        range.selectNode(urlField)
-        window.getSelection().addRange(range)
-        document.execCommand('copy')
-    }
+    // function copyTable () {
+    //     console.log('copied!')
+    //     const urlField = document.getElementById('table')
+    //     const range = document.createRange()
+    //     range.selectNode(urlField)
+    //     window.getSelection().addRange(range)
+    //     document.execCommand('copy')
+    // }
 
         return (
             <Navbar>
@@ -46,11 +46,11 @@ function myNav (props) {
                     Welcome, {props.username}
                 </Navbar.Brand>
                 <ButtonToolbar>
-                    <ButtonGroup className="mr-2">
+                    {/* <ButtonGroup className="mr-2">
                         <Button variant="info" className='btn-sm' onClick={copyTable}>
                             Copy Table
                         </Button>
-                    </ButtonGroup>
+                    </ButtonGroup> */}
                     <ButtonGroup className="mr-2">
                         <HtmlToExcel 
                             table="table"
