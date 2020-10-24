@@ -43,7 +43,10 @@ function myNav (props) {
         return (
             <Navbar>
                 <Navbar.Brand style={{ flex: 1 }}>
-                    Welcome, {props.username}
+                    <h3><strong>Precision19</strong></h3>
+                    <h5>Welcome, {props.username}</h5>
+                   
+                    
                 </Navbar.Brand>
                 <ButtonToolbar>
                     {/* <ButtonGroup className="mr-2">
