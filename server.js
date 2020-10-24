@@ -1,7 +1,6 @@
 const express = require('express');
 const session = require('express-session')
 const mongoose = require('mongoose');
-const MongoStore = require('connect-mongo')(session)
 const passport = require('passport')
 
 const path = require("path")
@@ -10,8 +9,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // DB STUFF
+require('dotenv').config()
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost/covid_db", { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(console.log('MongoDB connected'))
   .catch(err => console.log(err))
 
@@ -27,8 +27,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(session({
   secret: "a very secret string",
   resave: false,
-  saveUninitialized: true,
-  // store: new MongoStore({ mongooseConnection: mongoose.connection })
+  saveUninitialized: true
 }))
 
 // Passport stuff
