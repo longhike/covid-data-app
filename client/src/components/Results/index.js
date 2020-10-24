@@ -31,7 +31,7 @@ function Results (props) {
                 <td>
                     {currentPost.recovered.toLocaleString()}
                 </td>
-                <td>
+                <td >
                     <button className='btn btn-warning btn-sm' onClick={() => _delete(currentPost._id)}>
                         Delete
                     </button>
