@@ -13,7 +13,6 @@ function Results (props) {
     const currentPosts = props.currentPosts
     let mapPosts
     if (currentPosts) {
-        console.log(currentPosts);
         mapPosts = currentPosts.map(currentPost => {
             let date = new Date(currentPost.date).toISOString().substring(0, 10)
             return (

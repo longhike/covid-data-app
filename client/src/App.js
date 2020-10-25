@@ -27,12 +27,7 @@ class App extends Component {
     axios
     .get('/user')
     .then(response => {
-      console.log('Get user response: ')
-      console.log(response)
       if (response.data.user) {
-        console.log('Get User: There is a user saved in the server session: ')
-        console.log(response.data.user);
-
         this.setState({
           loggedIn: true,
           username: response.data.user,
@@ -42,7 +37,6 @@ class App extends Component {
         })
         this.getPosts()
       } else {
-        console.log('Get user: no user');
         this.setState({
           loggedIn: false,
           username: null,
@@ -66,7 +60,6 @@ class App extends Component {
   }
 
   loginUser = (name) => {
-    console.log(name)
 
     fetch("/login", {
       method: "POST",
@@ -86,7 +79,6 @@ class App extends Component {
   render() {
     const isLoggedIn = this.state.loggedIn
     let pageShown
-    console.log(this.state)
 
     if (isLoggedIn) {
       pageShown = <Main 

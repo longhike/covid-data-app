@@ -5,10 +5,11 @@ function Narrative() {
     return (
         <div>
             <Card>
-                <p>
-                    <h4><strong>For precision research on COVID-19.</strong>
-                    </h4>
-                </p>
+                <h4>
+                    <strong>
+                        For precision research on COVID-19.
+                    </strong>
+                </h4>
                 <p>
                     Comensurate with the scale of the catastrophy that is the COVID-19 pandemic, the volume of data generated is staggering. This is a tool for users undertaking specific, targeted research.
                 </p>

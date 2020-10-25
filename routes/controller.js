@@ -15,8 +15,6 @@ const key = process.env.API_KEY
 
 router
   .get('/user', (req, res, next) => {
-    console.log('===== user!! ======')
-    console.log(req.user)
     if (req.user.username) {
       res.json({ user: req.user.username, id: req.user._id, posts: req.user.posts })
     } else {
