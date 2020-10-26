@@ -9,13 +9,10 @@ import Navbar from 'react-bootstrap/Navbar'
 // props here are from App // Main
 
 function myNav (props) {
-    console.log(props);
     
     function logOut (event) {
         event.preventDefault()
-        console.log('logging out')
         axios.post('/logout').then(response => {
-          console.log(response.data)
           if (response.status === 200) {
             props.updateUser({
               loggedIn: false,
@@ -30,15 +27,6 @@ function myNav (props) {
             console.log('Logout error')
         })
       }
-    
-    // function copyTable () {
-    //     console.log('copied!')
-    //     const urlField = document.getElementById('table')
-    //     const range = document.createRange()
-    //     range.selectNode(urlField)
-    //     window.getSelection().addRange(range)
-    //     document.execCommand('copy')
-    // }
 
         return (
             <Navbar>
@@ -49,17 +37,13 @@ function myNav (props) {
                     
                 </Navbar.Brand>
                 <ButtonToolbar>
-                    {/* <ButtonGroup className="mr-2">
-                        <Button variant="info" className='btn-sm' onClick={copyTable}>
-                            Copy Table
-                        </Button>
-                    </ButtonGroup> */}
                     <ButtonGroup className="mr-2">
                         <HtmlToExcel 
                             table="table"
+                            sheet="precision_19_data"
                             filename={`data_export_${props.username}`}
-                            buttonText="Download"
-                            className="btn btn-dark btn-sm"
+                            buttonText="Download to Excel"
+                            className="btn btn-info btn-sm"
                         />
                     </ButtonGroup>
                     <ButtonGroup>

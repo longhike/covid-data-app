@@ -23,7 +23,6 @@ function SearchCard(props) {
         setLoadingDisplay(true)
         try {
             const result = await API.runSearch(date.join("-"))
-            console.log(result)
             if (result === undefined) {
                 setLoadingDisplay(false)
                 setWarnDisplay(true)

@@ -1,4 +1,5 @@
 import React from 'react';
+import dateFormat from 'dateformat'
 import API from '../../utils/api'
 import Table from 'react-bootstrap/Table'
 
@@ -13,9 +14,8 @@ function Results (props) {
     const currentPosts = props.currentPosts
     let mapPosts
     if (currentPosts) {
-        console.log(currentPosts);
         mapPosts = currentPosts.map(currentPost => {
-            let date = new Date(currentPost.date).toISOString().substring(0, 10)
+            let date = dateFormat(currentPost.date, "m/d/yyyy")
             return (
             <tr key={currentPost._id}>
                 <td>
@@ -45,7 +45,7 @@ function Results (props) {
     
     return (
     <div>
-        <Table id={'table'} striped bordered hover >
+        <Table id={'table'} striped bordered hover responsive >
             <thead>
                 <tr>
                 <th>

@@ -20,15 +20,21 @@ function LoginForm(props) {
                     <div className='col-md-6'>
                         <Card  style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <div className='card-header'>
-                                <h3>
+                                <h1>
                                     <strong>
                                         Precision19
                                     </strong>
-                                </h3>
+                                </h1>
                             </div>
                             <div className='card-body'>
-                                <p>
+                                <h4>
                                     A targeted resource for researchers
+                                </h4>
+                                <p>
+                                    If you have an account, enter your username and log in.
+                                </p>
+                                <p>
+                                    If you've never logged in, just enter a username and hit "Log In," and an account will be created for you.
                                 </p>
                             </div>
                             <div className="form-group">
