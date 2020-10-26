@@ -1,21 +1,18 @@
-import React from 'react';
-import dateFormat from 'dateformat'
+import React, { useEffect } from 'react';
+// import dateFormat from 'dateformat'
 import API from '../../utils/api'
 import Table from 'react-bootstrap/Table'
 
 function Results (props) {
-
-    function _delete(id) {
-        API.deleteSearch(id)
-          .then(props.getPosts)
-          .catch(err => console.log(err));
-      }
-
     const currentPosts = props.currentPosts
+    let currentLength
     let mapPosts
+
     if (currentPosts) {
+        currentLength = currentPosts.length
         mapPosts = currentPosts.map(currentPost => {
-            let date = dateFormat(currentPost.date, "m/d/yyyy")
+            let date = new Date(currentPost.date).toISOString().substring(0, 10)
+            // date = dateFormat(date)
             return (
             <tr key={currentPost._id}>
                 <td>
@@ -39,9 +36,13 @@ function Results (props) {
             </tr>
             )
         }) 
+    } 
+
+    function _delete(id) {
+        API.deleteSearch(id)
+          .then(props.getPosts)
+          .catch(err => console.log(err));
     }
-
-
     
     return (
     <div>
@@ -66,7 +67,7 @@ function Results (props) {
                 </tr>
             </thead>
             <tbody>
-                {mapPosts}
+                {currentLength > 0 ? mapPosts : <tr key='none' style={{ textAlign: 'center' }}><td colSpan="5">No results yet</td></tr>}
             </tbody>
         </Table>
     </div>

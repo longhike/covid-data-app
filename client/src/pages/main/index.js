@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '../../components/Header'
 import SearchCard from '../../components/SearchCard'
 import Narrative from '../../components/Narrative'
@@ -12,7 +12,6 @@ function Main(props) {
         <div className="row">
         <Narrative />
         </div>
-        {/* this is the main body row that holds both the search form and results */}
         <div className="row" id="main">
           <div className="col-md-3">
             <SearchCard getPosts={props.getPosts}/>
