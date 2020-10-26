@@ -44,7 +44,7 @@ function Results (props) {
     
     return (
     <div>
-        <Table id={'table'} striped bordered hover >
+        <Table id={'table'} striped bordered hover responsive >
             <thead>
                 <tr>
                 <th>

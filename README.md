@@ -23,7 +23,7 @@ run `npm start` to locally start the program
 
 ## Known Bugs
 
-No known bugs.
+Currently not functional on iOS Safari 
 
 ## Support & Contact details
 

@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card'
 function Narrative() {
     return (
         <div>
-            <Card>
+            <Card id='narrative'>
                 <h4>
                     <strong>
                         For precision research on COVID-19.
