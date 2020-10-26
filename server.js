@@ -37,9 +37,9 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())                  
 
-// ROUTES
-const router = require('./routes/controller')
-app.use(router)
+// CONTROLLER
+const controller = require('./controller/controller')
+app.use(controller)
 
 
 app.listen(PORT, () => {
