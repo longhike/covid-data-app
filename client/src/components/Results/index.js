@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// import dateFormat from 'dateformat'
+import dateFormat from 'dateformat'
 import API from '../../utils/api'
 import Table from 'react-bootstrap/Table'
 
@@ -12,7 +12,8 @@ function Results (props) {
         currentLength = currentPosts.length
         mapPosts = currentPosts.map(currentPost => {
             let date = new Date(currentPost.date).toISOString().substring(0, 10)
-            // date = dateFormat(date)
+            date = date + "T19:03:34+00:00"
+            date = dateFormat(date, "mediumDate")
             return (
             <tr key={currentPost._id}>
                 <td>
