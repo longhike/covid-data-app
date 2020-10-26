@@ -42,8 +42,8 @@ function myNav (props) {
                             table="table"
                             sheet="precision_19_data"
                             filename={`data_export_${props.username}`}
-                            buttonText="Download"
-                            className="btn btn-dark btn-sm"
+                            buttonText="Download to Excel"
+                            className="btn btn-info btn-sm"
                         />
                     </ButtonGroup>
                     <ButtonGroup>

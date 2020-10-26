@@ -4,7 +4,7 @@
 
 ## Description
 
-A user interface for global COVID-19 data, by which a researcher can input a date and receive in a table the data for said date (confirmed, recovered, deaths) from Johns Hopkins University.'
+A user interface for global COVID-19 data, by which a researcher can input a date and receive in a table the data for said date (confirmed, recovered, deaths) from Johns Hopkins University.
 
 UPDATES TO COME:
 1. search by date and country interface
@@ -23,7 +23,7 @@ run `npm start` to locally start the program
 
 ## Known Bugs
 
-Currently not functional on iOS Safari 
+some functionality issues in iOS Safari; for best results, use a different browser
 
 ## Support & Contact details
 
