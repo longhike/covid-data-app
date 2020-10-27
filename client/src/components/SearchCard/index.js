@@ -12,7 +12,7 @@ function SearchCard(props) {
 
     const update = ({ target }) => {
         const index = parseInt(target.getAttribute("data-index"))
-        const value = target.value.length === 2 ? target.value : "0" + target.value;
+        const value = target.value.length >= 2 ? target.value : "0" + target.value;
 
         date[index] = value;
 
@@ -49,6 +49,7 @@ function SearchCard(props) {
                 <div className="form-group">
                         <select className="form-control" type="number" data-index="0" placeholder='Year (#)' onChange={update}>
                         <option>2020</option>
+                        <option>2021</option>
                     </select>
                 </div>
                 <Warn warnDisplay={warnDisplay}>Please use a valid date</Warn>
